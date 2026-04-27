@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse all ShopEase products — electronics, footwear, accessories, home & kitchen, sports gear and more." />
+  <title>All Products — ShopEase</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="products">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="ShopEase home">
+        <div class="nav-logo-icon" aria-hidden="true">🛍</div>
+        ShopEase
+      </a>
+
+      <ul class="nav-menu" id="nav-menu" role="list">
+        <li><a href="index.html"    class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="cart.html"     class="nav-link">Cart</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="nav-cart" aria-label="Shopping cart">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <circle cx="9"  cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge" aria-live="polite">0</span>
+        </a>
+        <div class="auth-links"></div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section" style="padding-top: 2rem;" aria-label="Product catalog">
+      <div class="container">
+
+        <!-- Page heading -->
+        <div style="margin-bottom: 2rem;">
+          <h1 class="page-heading">All Products</h1>
+          <p style="color: var(--muted); font-size: 0.95rem;">
+            Find exactly what you're looking for from our curated collection.
+          </p>
+        </div>
+
+        <!-- Toolbar: search + count -->
+        <div class="products-toolbar">
+          <div class="search-wrap" role="search">
+            <span class="search-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </span>
+            <label for="search-input" class="visually-hidden">Search products</label>
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Search products, categories…"
+              autocomplete="off"
+              aria-label="Search products"
+            />
+            <button id="search-clear" class="search-clear" aria-label="Clear search" title="Clear">×</button>
+          </div>
+          <p class="products-count" id="products-count" aria-live="polite"></p>
+        </div>
+
+        <!-- Category filters -->
+        <div class="filters-bar" id="category-filters" role="group" aria-label="Filter by category">
+          <!-- Injected by main.js -->
+        </div>
+
+        <!-- Products grid -->
+        <div class="products-grid" id="products-grid" aria-live="polite">
+          <!-- Injected by main.js -->
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <div class="footer-logo-icon" aria-hidden="true">🛍</div>
+            ShopEase
+          </div>
+          <p class="footer-tagline">
+            Your one-stop destination for premium products at unbeatable prices.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="Facebook">f</a>
+            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-link" aria-label="Instagram">in</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Shop</h4>
+          <ul class="footer-links">
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="products.html">Electronics</a></li>
+            <li><a href="products.html">Footwear</a></li>
+            <li><a href="products.html">Accessories</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ShopEase. All rights reserved.</p>
+        <nav class="footer-legal-links" aria-label="Legal links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/firestore.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

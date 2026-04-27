@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Checkout — complete your ShopEase order" />
+  <title>Checkout — ShopEase</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="checkout">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="ShopEase home">
+        <div class="nav-logo-icon" aria-hidden="true">🛍</div>
+        ShopEase
+      </a>
+
+      <ul class="nav-menu" id="nav-menu" role="list">
+        <li><a href="index.html"    class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="cart.html"     class="nav-link">Cart</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="nav-cart" aria-label="Shopping cart">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <circle cx="9"  cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge" aria-live="polite">0</span>
+        </a>
+        <div class="auth-links"></div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="checkout-section" aria-label="Checkout">
+      <div class="container">
+
+        <h1 class="page-heading">Checkout</h1>
+
+        <!-- ── Order success state (shown after placing order) ── -->
+        <div class="order-success" id="order-success" role="alert" aria-live="assertive">
+          <div class="success-checkmark" aria-hidden="true">🎉</div>
+          <h2 class="success-title">Order Placed!</h2>
+          <p class="success-subtitle">Thank you for your purchase. Your order is confirmed.</p>
+          <p class="success-order">Order ID: <span id="order-number"></span></p>
+          <p style="color: var(--muted); font-size: 0.9rem;">
+            A confirmation email has been sent to your inbox.
+          </p>
+          <div style="display:flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center;">
+            <a href="products.html" class="btn btn-primary btn-lg">Continue Shopping</a>
+            <a href="index.html"    class="btn btn-secondary btn-lg">Go to Home</a>
+          </div>
+        </div>
+
+        <!-- ── Checkout layout ── -->
+        <div class="checkout-layout">
+
+          <!-- Form section -->
+          <div id="checkout-form-section">
+            <div class="checkout-form-card">
+              <h2 class="checkout-form-heading">Shipping &amp; Payment Details</h2>
+
+              <form id="checkout-form" novalidate>
+
+                <!-- Contact -->
+                <p class="form-section-title">Contact Information</p>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="first-name" class="form-label">First Name <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="first-name" name="first-name" class="form-input"
+                      placeholder="John" autocomplete="given-name" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="last-name" class="form-label">Last Name <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="last-name" name="last-name" class="form-input"
+                      placeholder="Doe" autocomplete="family-name" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address <span class="req" aria-hidden="true">*</span></label>
+                  <input type="email" id="email" name="email" class="form-input"
+                    placeholder="john@example.com" autocomplete="email" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone" class="form-label">Phone Number <span class="req" aria-hidden="true">*</span></label>
+                  <input type="tel" id="phone" name="phone" class="form-input"
+                    placeholder="+1 (555) 000-0000" autocomplete="tel" required />
+                </div>
+
+                <!-- Shipping address -->
+                <p class="form-section-title">Shipping Address</p>
+
+                <div class="form-group">
+                  <label for="address" class="form-label">Street Address <span class="req" aria-hidden="true">*</span></label>
+                  <input type="text" id="address" name="address" class="form-input"
+                    placeholder="123 Main St, Apt 4B" autocomplete="street-address" required />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="city" class="form-label">City <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="city" name="city" class="form-input"
+                      placeholder="New York" autocomplete="address-level2" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="zip" class="form-label">ZIP / Postal Code <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="zip" name="zip" class="form-input"
+                      placeholder="10001" autocomplete="postal-code" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="country" class="form-label">Country <span class="req" aria-hidden="true">*</span></label>
+                  <select id="country" name="country" class="form-select" autocomplete="country" required>
+                    <option value="">Select country…</option>
+                    <option value="US" selected>United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="AU">Australia</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="EG">Egypt</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <!-- Payment method -->
+                <p class="form-section-title">Payment Method</p>
+                <div class="payment-options" role="radiogroup" aria-label="Payment method">
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="card" checked />
+                    <span class="payment-option-text">💳 Credit / Debit Card</span>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="paypal" />
+                    <span class="payment-option-text">🅿️ PayPal</span>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="cod" />
+                    <span class="payment-option-text">💵 Cash on Delivery</span>
+                  </label>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                  <button type="submit" class="btn btn-primary btn-full btn-lg">
+                    Place Order
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" aria-hidden="true">
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </button>
+                  <p style="font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 0.75rem;">
+                    🔒 Your payment info is encrypted and secure.
+                  </p>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+          <!-- Order summary sidebar -->
+          <aside id="checkout-summary-section">
+            <div class="summary-card" aria-label="Order summary">
+              <h2 class="summary-card-title">Order Summary</h2>
+
+              <!-- Items list -->
+              <div class="order-items-list" id="order-items" aria-live="polite">
+                <!-- Injected by main.js -->
+              </div>
+
+              <hr class="summary-sep" />
+
+              <div class="summary-line">
+                <span class="summary-line-label">Subtotal</span>
+                <span class="summary-line-value" id="checkout-subtotal">$0.00</span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-line-label">Shipping</span>
+                <span class="summary-line-value" id="checkout-shipping">$0.00</span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-line-label">Tax (8%)</span>
+                <span class="summary-line-value" id="checkout-tax">$0.00</span>
+              </div>
+
+              <hr class="summary-sep" />
+
+              <div class="summary-total-line">
+                <span class="summary-total-label">Total</span>
+                <span class="summary-total-value" id="checkout-total">$0.00</span>
+              </div>
+
+              <p class="free-ship-note">🚚 Free shipping on orders over $50!</p>
+
+              <a href="cart.html" class="btn btn-secondary btn-full" style="margin-top: 0.5rem;">
+                ← Back to Cart
+              </a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <div class="footer-logo-icon" aria-hidden="true">🛍</div>
+            ShopEase
+          </div>
+          <p class="footer-tagline">Your one-stop destination for premium products.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="Facebook">f</a>
+            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-link" aria-label="Instagram">in</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Shop</h4>
+          <ul class="footer-links">
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="products.html">Electronics</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ShopEase. All rights reserved.</p>
+        <nav class="footer-legal-links" aria-label="Legal links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/firestore.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
